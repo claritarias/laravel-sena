@@ -9,7 +9,9 @@
 <body>
   <main>
     @include('includes.header')
+    <div class="container theme-showcase">
     @yield('content')
+    </div>
     @include('includes.footer')
   </main>
 </body>

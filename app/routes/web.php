@@ -17,3 +17,5 @@ Route::get('/test', function () {
     return "Hello World!";
     //return view('welcome');
 });
+
+Route::resource('categorias', 'CategoriesController');
