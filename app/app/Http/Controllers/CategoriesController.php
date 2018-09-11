@@ -14,8 +14,11 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        $categories = Category::orderBy('created_at', 'asc')->paginate(10);
-        return view('pages.categories.index')->with('categories', $categories);
+        $data = array(
+            'categories' => Category::orderBy('created_at', 'asc')->paginate(10),
+            'url' => '/categorias',
+        );
+        return view('pages.categories.index', $data);
     }
 
     /**
