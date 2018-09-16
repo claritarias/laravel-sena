@@ -18,7 +18,7 @@ class CategoriesController extends Controller
             'categories' => Category::orderBy('created_at', 'asc')->paginate(10),
             'url' => '/categorias',
         );
-        return view('pages.categories.index', $data);
+        return view('categories.index', $data);
     }
 
     /**
@@ -28,7 +28,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('categories.create');
     }
 
     /**
@@ -39,7 +39,16 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'category' => 'required',
+        ]);
+
+        // Create category
+        $category = new Category;
+        $category->category = $request->input('category');
+        $category->save();
+
+        return redirect('/categorias')->with('success', 'Categoría agregada con éxito');
     }
 
     /**
@@ -61,7 +70,8 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::find($id);
+        return view('categories.edit')->with('category', $category);
     }
 
     /**
@@ -73,7 +83,16 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'category' => 'required',
+        ]);
+
+        // Create category
+        $category = Category::find($id);
+        $category->category = $request->input('category');
+        $category->save();
+
+        return redirect('/categorias')->with('success', 'Categoría editada con éxito');
     }
 
     /**
@@ -84,6 +103,8 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::find($id);
+        $category->delete();
+        return redirect('/categorias')->with('success', 'Categoría eliminada con éxito');
     }
 }

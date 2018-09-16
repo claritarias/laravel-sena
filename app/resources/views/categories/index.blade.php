@@ -1,4 +1,4 @@
-@extends('templates.base')
+@extends('layouts.app')
 
 @section('content')
     <h1 class="page-header">Categorías</h1>
@@ -8,7 +8,7 @@
             <tr>
                 <th>#</th>
                 <th>Categoría</th>
-                <th>Acciones</th>
+                <th colspan="2" class="text-center">Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -17,10 +17,13 @@
                     <tr>
                         <td>{{$category->id}}</td>
                         <td>{{$category->category}}</td>
+                        <td class="text-right">
+                            @include('includes.buttons.edit', ['action' =>
+                                $url.'/'.$category->id.'/edit'])
+                        </td>
                         <td>
-                            <a class="btn btn-sm btn-info"
-                               href="/categorias/{{$category->id}}">Editar</a>
-                            <a class="btn btn-sm btn-danger" href="#">Eliminar</a>
+                            @include('includes.buttons.delete', ['action' =>
+                                ['CategoriesController@destroy', $category->id]])
                         </td>
                     </tr>
                 @endforeach
@@ -32,4 +35,5 @@
         </tbody>
     </table>
     {{$categories->links()}}
+    <a class="btn btn-primary" href="{{$url}}/create">Agregar una categoría</a>
 @endsection
