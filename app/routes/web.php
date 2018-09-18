@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::resource('categorias', 'CategoriesController');
+Route::resource('preguntas', 'QuestionsController');
