@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::resource('categorias', 'CategoriesController');
 Route::resource('preguntas', 'QuestionsController');
+
+Auth::routes();
+
+Route::get('/', 'HomeController@index')->name('home');

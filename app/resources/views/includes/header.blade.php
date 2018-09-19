@@ -1,1 +1,3 @@
-<header></header>
+<header>
+    @include('includes.nav')
+</header>
