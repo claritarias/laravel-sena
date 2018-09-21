@@ -15,7 +15,8 @@ class QuestionsController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //lets only users with a specific permission to access these resources
+        $this->middleware(['auth', 'canEdit']);
     }
 
     /**
