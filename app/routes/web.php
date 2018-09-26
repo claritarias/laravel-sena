@@ -16,6 +16,8 @@ Route::resource('preguntas', 'QuestionsController');
 Route::resource('usuarios', 'UsersController');
 Route::resource('roles', 'RolesController');
 Route::resource('permisos', 'PermissionsController');
+Route::resource('programas', 'ProgramsController');
+Route::resource('fichas', 'FilesController');
 
 Auth::routes();
 
