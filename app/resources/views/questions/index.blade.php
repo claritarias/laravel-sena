@@ -1,7 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="page-header">Preguntas</h1>
+<div class="col-lg-10 col-lg-offset-1">
+    <header class="clearfix">
+        <h1 class="page-header pull-left">Preguntas</h1>
+        <a href="{{ route('categorias.index') }}" class="btn btn-default
+            pull-right">Categorías</a></h1>
+    </header>
+    <hr>
 
     <table class="table table-striped">
         <thead>
@@ -38,4 +44,5 @@
     </table>
     {{$questions->links()}}
     <a class="btn btn-primary" href="{{$url}}/create">Agregar una pregunta</a>
+</div>
 @endsection

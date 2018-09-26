@@ -1,8 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="page-header">Fichas</h1>
-
+<div class="col-lg-10 col-lg-offset-1">
+    <header  class="clearfix">
+        <h1 class="page-header pull-left">Fichas</h1>
+        <a href="{{ route('programas.index') }}" class="btn btn-default pull-right">Programas</a>
+    </header>
+    <hr>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -38,4 +42,5 @@
     </table>
     {{$files->links()}}
     <a class="btn btn-primary" href="{{$url}}/create">Agregar una Ficha</a>
+</div>
 @endsection
